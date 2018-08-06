@@ -601,14 +601,14 @@ int adventurerEffect(int drawntreasure, struct gameState *state, int currentPlay
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
       drawntreasure++;
     else {
-      temphand[z]=cardDrawn;
+      temphand[z] = cardDrawn;
       state->handCount[currentPlayer]--; // this should just remove the top card (the most recently drawn one).
       z++;
     }
   }
   while (z-1 >= 0) {
     // discard all cards in play that have been drawn
-    state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1];
+    state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z-1];
     z = z-1;
   }
   return 0;
@@ -705,7 +705,7 @@ int baronEffect(struct gameState *state, int choice1, int currentPlayer) {
   if (choice1 > 0) { // Boolean true or going to discard an estate
     int p = 0; // Iterator for hand!
     int card_not_discarded = 1; // Flag for discard set!
-    while(card_not_discarded) {
+    while (card_not_discarded) {
       if (state->hand[currentPlayer][p] == estate) { // Found an estate card!
         state->coins += 4; // Add 4 coins to the amount of coins
         state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->hand[currentPlayer][p];
